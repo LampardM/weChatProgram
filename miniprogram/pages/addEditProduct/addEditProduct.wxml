@@ -1,0 +1,91 @@
+<view class="cur-container">
+  <view class="addedit-product">
+    <view class="edit-item">
+      <view class="pro-name">名称：</view>
+      <view class="pro-content">
+        <input 
+          type="text" 
+          value="{{pro_name}}" 
+          bindconfirm="confirmProname" 
+          bindblur="confirmProname"
+          placeholder="商品名称"
+          placeholder-class="pro-input" />
+      </view>
+    </view>
+
+    <view class="edit-item">
+      <view class="pro-name">价格：</view>
+      <view class="pro-content">
+        <input 
+          type="number" 
+          value="{{pro_price}}"
+          bindconfirm="confirmProprice" 
+          bindblur="confirmProprice"
+          placeholder="只能输入整数和小数"
+          placeholder-class="pro-input" />
+        </view>
+    </view>
+
+    <view class="edit-item">
+      <view class="pro-name">口令：</view>
+      <view class="pro-content">
+        <input 
+          type="text" 
+          value="{{pro_command}}"
+          bindconfirm="confirmProcommand" 
+          bindblur="confirmProcommand"
+          placeholder="以￥开头和结尾，如￥123￥"
+          placeholder-class="pro-input" />
+        </view>
+    </view>
+
+    <view class="edit-item">
+      <view class="pro-name">热销：</view>
+      <view class="pro-content">
+        <switch checked="{{ishot}}" bindchange="switch1Change"/>
+      </view>
+    </view>
+
+    <view class="edit-item">
+      <view class="pro-name">图片：</view>
+      <view class="pro-content">
+        <block wx:for="{{pro_fileid}}" wx:key="{{index}}">
+          <view class="img-container">
+            <view class="remove-icon iconfont icon-shanchu" bindtap="removeImg" data-id="{{item}}"></view>
+            <image src="{{item}}"/>
+          </view>
+        </block>
+
+        <view class="add-container" wx:if="{{pro_fileid.length < 3}}" bindtap="uploadProImgUrl">
+          <view class="add-btn iconfont icon-zengjia1"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="edit-item">
+      <view class="pro-name">描述：</view>
+      <view class="pro-content">
+        <textarea 
+          value="{{pro_desc}}"
+          class="pro-textarea"
+          placeholder="商品描述"
+          placeholder-class="pro-input"
+          bindconfirm="confirmProdesc" 
+          bindblur="confirmProdesc"
+          bindinput="confirmProdesc"
+        />
+      </view>
+    </view>
+
+    <!--
+      <view>
+        <image src="{{pro_url[0]}}" />
+      </view>
+    -->
+  </view>
+  
+  <view class="submit-btn">
+    <view bindtap="submitProdetail">提交</view>
+  </view>
+
+</view>

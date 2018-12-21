@@ -1,0 +1,13 @@
+<view class="modal-container" hidden="{{!isShow}}">
+  <view class="modal-mask" bindtap="closeCurModal"></view>
+  <view class="modal-content">
+    <slot name="header"></slot>
+    <view class="modal-header iconfont icon-taobaotese">淘口令</view>
+    <view class="modal-body">{{taoCommand}}</view>
+    <view class="modal-footer">
+      <view class="copy-btn" bindtap="copyCommand" data-text="{{taoCommand}}">复制淘口令</view>
+    </view>
+
+    <view class="iconfont icon-shanchu2 modal-delete" bindtap="closeCurModal"></view>
+  </view>
+</view>

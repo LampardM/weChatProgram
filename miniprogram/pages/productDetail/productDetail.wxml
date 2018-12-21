@@ -1,0 +1,49 @@
+<view class="detail-container">
+  <view class="swiper-con">
+    <swiper 
+      class="cur-swiper"
+      indicator-dots="{{indicatorDots}}"
+      autoplay="{{autoplay}}" 
+      interval="{{interval}}" 
+      duration="{{duration}}"
+      circular="{{circular}}">
+
+      <block wx:for="{{pro_detail.pro_fileid}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="100%" height="600"/>
+        </swiper-item>
+      </block>
+
+    </swiper>
+  </view>
+
+  <view class="detail-name">{{pro_detail.pro_name}}</view>
+  <view class="detail-desc">{{pro_detail.pro_desc}}</view>
+  <view class="detail-price"><text class="price-text">￥</text>{{pro_detail.pro_price}}</view>
+
+  <view class="must-know">
+    <view class="iconfont icon-zhuyi zhuyi"></view>
+    <view>须知：一切商品以微信图片为实物参照哦</view>
+  </view>
+
+  <!--  
+    <view class="detail-command">
+      <view class="detail-tips">
+        <view class="iconfont icon-tips"></view>
+        <text>复制淘口令后进入淘宝app打开哦</text>
+      </view>
+
+      <view class="detail-btn">
+        <view bindtap="getProcommand">查看淘口令</view>
+      </view>
+    </view>
+  -->
+
+  <view class="end-container">
+    <view>到底啦</view>
+    <view class="iconfont icon-weixiao- smile"></view>
+  </view>
+
+  <modal-component isShow="{{isShow}}" taoCommand="{{pro_detail.pro_command}}" bind:closeModal="closeCurrentModal" catchtouchmove='stopPageScroll'></modal-component>
+
+</view>

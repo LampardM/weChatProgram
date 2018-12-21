@@ -1,0 +1,17 @@
+{
+  "cloud": true,
+  "pages": [
+    "pages/index/index",
+    "pages/chooseLib/chooseLib",
+    "pages/productList/productList",
+    "pages/addEditProduct/addEditProduct",
+    "pages/productDetail/productDetail"
+  ],
+  "window": {
+    "backgroundColor": "#63B8FF",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#63B8FF",
+    "navigationBarTitleText": "美熙蛋糕装饰",
+    "navigationBarTextStyle": "white"
+  }
+}

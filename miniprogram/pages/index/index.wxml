@@ -1,0 +1,104 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 首页轮播图 -->
+  <view class="swiper-container">
+    <swiper 
+      class="cur-swiper"
+      indicator-dots="{{indicatorDots}}"
+      autoplay="{{autoplay}}" 
+      interval="{{interval}}" 
+      duration="{{duration}}" 
+      circular="{{circular}}">
+
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="100%" height="600"/>
+        </swiper-item>
+      </block>
+      
+    </swiper>
+  </view>
+
+  <!-- 商品分类 -->
+  <view class="sort-container">
+    <view class="classifal-container">
+      <view class="classifal-item" bindtap="goProductlist" data-type="1">
+        <view class="iconfont icon-dangao" style="color:#FFA54F"><text>畅销摆件</text></view>
+      </view>
+      <view class="classifal-item" bindtap="goProductlist" data-type="2">
+        <view class="iconfont icon-liudonghongqi" style="color:#FF0000"><text>热卖插牌</text></view>
+      </view>
+      <view class="classifal-item" bindtap="goProductlist" data-type="3">
+        <view class="iconfont icon-youxi" style="color:#1E90FF"><text>网红爆款</text></view>
+      </view>
+      <view class="classifal-item" bindtap="goProductlist" data-type="4">
+        <view class="iconfont icon-lazhu" style="color:#FFA54F"><text>蜡烛焰火</text></view>
+      </view>
+      <view class="classifal-item" bindtap="goProductlist" data-type="6">
+        <view class="iconfont icon-shiwu" style="color:#FFA54F"><text>食用装饰</text></view>
+      </view>
+      <view class="classifal-item" bindtap="goProductlist" data-type="5">
+        <view class="iconfont icon-zhu" style="color:#FFAEB9"><text>特价清库存</text></view>
+      </view>   
+    </view>
+  </view>
+
+  <!-- 客服电话 -->
+  <view class="contact-container">
+    <view ><button class="contact-btn iconfont icon-dianhua" bindtap="makePhonecall"></button></view>
+    <view><button open-type="contact" class="contact-btn iconfont icon-kefu"></button></view>
+  </view>
+
+  <!-- 回到顶部 -->
+  <view class="back-top" wx:if="{{toTop}}" bindtap="backtop">
+    <view class="iconfont icon-huidaodingbu"></view>
+  </view>
+
+  <!-- 热门商品 -->
+  <view class="hot-container">
+    <view class="hot-header">
+      <view class="header-icon iconfont icon-hot"></view>
+      <view class="header-text">热门商品</view>
+    </view>
+
+    <view class="hot-body {{hotlist.length === 0 ? 'add-padding' : ''}}">
+      <view class="iconfont icon-shangxin sad-icon" wx:if="{{hotlist.length === 0}}"></view>
+      <view wx:if="{{hotlist.length === 0}}">空空如也</view>
+
+      <view class="hot-list" wx:if="{{hotlist.length > 0}}">
+        <block wx:for="{{hotlist}}" wx:key="{{index}}">
+          <view class="product-item {{item.diff <= 0 ? 'pro-disabled': ''}}" bindtap="goProductDetail" data-diff="{{item.diff}}" data-id="{{item._id}}">
+            <view class="item-img"><image src="{{item.pro_fileid[0]}}"/></view>
+            <view class="name-price-container">
+              <view class="price_name">{{item.pro_name}}</view>
+            </view>
+            <!-- <view class="desc-container">{{item.pro_desc}}</view> -->
+
+            <view wx:if="{{isAdmin}}" class="command-cur">
+              <view class="pro-command" wx:if="{{item.diff > 3}}">淘口令还有{{item.diff}}天过期</view>
+              <view class="pro-command diff-command" wx:if="{{item.diff < 3 && item.diff > 0}}">淘口令{{item.diff}}天后过期，请及时更新！</view>
+              <view class="pro-command diff-command" wx:if="{{item.diff <= 0}}">淘口令已经过期，请及时更新！</view>
+            </view>
+
+            <view class="pro_price"><text class="price_text">￥</text>{{item.pro_price}}</view>
+
+            <view class="edit-item" wx:if="{{isAdmin}}">
+              <view class="iconfont icon-edit" catchtap="editProduct" data-detail="{{item}}" wx:if="{{isAdmin}}" data-type="{{item.pro_type}}"></view>
+              <view class="iconfont icon-shanchu1" catchtap="deleteProduct" data-id="{{item._id}}" data-type="{{item.pro_type}}" data-profileid="{{item.pro_fileid}}" wx:if="{{isAdmin}}"></view>
+            </view>
+
+            <view class="post-mark" wx:if="{{item.diff <= 0}}">
+              <view class="mark-inside">已过期</view>
+            </view>
+
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="end-container">
+      <view>到底啦</view>
+      <view class="iconfont icon-weixiao- smile"></view>
+    </view>
+  </view>
+</view>
