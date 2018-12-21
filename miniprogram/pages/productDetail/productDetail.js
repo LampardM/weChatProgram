@@ -66,7 +66,7 @@ Page({
     })
   },
 
-  // 复制淘口令
+  // 复制
   getProcommand() {
     this.setData({
       isShow: true

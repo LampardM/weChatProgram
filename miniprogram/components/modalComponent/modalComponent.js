@@ -44,7 +44,7 @@ Component({
       this.triggerEvent('closeModal')
     },
 
-    // 复制淘口令
+    // 复制
     copyCommand: function(e) {
       wx.setClipboardData({
         data: e.currentTarget.dataset.text,

@@ -86,7 +86,7 @@ Page({
     })
   },
 
-  // 计算口令过期时间
+  // 计算
   getProductCommand(prolist) {
 
     prolist.forEach((pro) => {
@@ -138,11 +138,6 @@ Page({
       wx.navigateTo({ url: '../productDetail/productDetail?id=' + id })
     } else {
       // 过期了
-      wx.showToast({
-        title: '淘口令已过期，请耐心等待商家更新',
-        icon: 'none',
-        duration: 2000
-      })
     }
   },
 

@@ -27,19 +27,6 @@
     </view>
 
     <view class="edit-item">
-      <view class="pro-name">口令：</view>
-      <view class="pro-content">
-        <input 
-          type="text" 
-          value="{{pro_command}}"
-          bindconfirm="confirmProcommand" 
-          bindblur="confirmProcommand"
-          placeholder="以￥开头和结尾，如￥123￥"
-          placeholder-class="pro-input" />
-        </view>
-    </view>
-
-    <view class="edit-item">
       <view class="pro-name">热销：</view>
       <view class="pro-content">
         <switch checked="{{ishot}}" bindchange="switch1Change"/>

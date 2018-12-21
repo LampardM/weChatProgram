@@ -242,7 +242,7 @@ Page({
     let reg=/^\d+(\.\d{0,4})?$/;
 
     if(reg.test(price)) {
-      let priceNow = JSON.parse(price)
+      let priceNow = price
       this.setData({
         pro_price: priceNow
       })
@@ -263,33 +263,6 @@ Page({
   confirmProprice(event) {
     let price = event.detail.value
     this.checkProprice(price)
-  },
-
-  // 口令合法性检测
-  checkCommand(command) {
-    let reg = /^(￥|¥)(.*)(￥|¥)/;
-
-    if(reg.test(command)) {
-      this.setData({
-        pro_command: command
-      })
-      return true
-    } else {
-      wx.showToast({
-        title: '请输入正确口令',
-        icon: 'none',
-        duration: 2000
-      })
-
-      return false
-
-    }
-  },
-
-  // 商品口令回调
-  confirmProcommand(event) {
-    let command = event.detail.value
-    this.checkCommand(command)
   },
 
   // 商品名合法性检测
@@ -334,29 +307,15 @@ Page({
     }
   },
 
-  // 比较口令是否改变
-  commandIschange(origin_command ,cur_command) {
-    let origin = origin_command.split('¥')[1] || origin_command.split('￥')[1]
-    let cur = cur_command.split('¥')[1] || cur_command.split('￥')[1]
-
-    if(origin === cur) {
-      console.log('口令没更新')
-      return false
-    } else {
-      console.log('口令更新了')
-      return true
-    }
-  },
-
   // 提交商品信息
   submitProdetail() {
     let { type, pro_type, pro_name, pro_price, pro_command, pro_fileid, pro_desc, create_date, _id, ishot } = this.data
 
     let curdate = +new Date()
 
-    if(this.checkProname(pro_name) && this.checkProprice(pro_price) && this.checkCommand(pro_command) && this.checkProimgUrl(pro_fileid) && this.checkProndesc(pro_desc)) {
+    if(this.checkProname(pro_name) && this.checkProprice(pro_price) && this.checkProimgUrl(pro_fileid) && this.checkProndesc(pro_desc)) {
       if(type === 1) {
-        // 新增商品 口令时间和创建商品时间一致
+        // 新增商品
         this.setData({
           create_date: curdate,
           command_date: curdate
@@ -390,18 +349,8 @@ Page({
         .catch(console.error)
   
       } else {
-        // 编辑商品 口令时间晚于创建商品时间
+        // 编辑商品
         let { origin_command, pro_command } = this.data
-
-        if(this.commandIschange(origin_command, pro_command)) {
-          // 口令更新
-          this.setData({
-            command_date: curdate
-          })
-
-        } else {
-          // 口令未更新
-        }
 
         let { command_date } = this.data
 

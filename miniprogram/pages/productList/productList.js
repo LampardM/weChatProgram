@@ -39,22 +39,6 @@ Page({
     this.getProductList(JSON.parse(this.data.pro_type))
   },
 
-  // 计算口令过期时间
-  getProductCommand(prolist) {
-
-    prolist.forEach((pro) => {
-      let createdate = pro.command_date
-      let lastdate = moment(createdate).add(30, 'days')
-
-      const diff = lastdate.diff(moment(), 'days')
-
-      pro.diff = diff
-    })
-
-    return app.globalData._.sortBy(prolist, (n) => { return n.pro_price})
-
-  },
-
   // 获取产品列表
   getProductList(type) {
     wx.showLoading({
@@ -68,8 +52,6 @@ Page({
       }
     }).then((res) => {
       let result = res.result.data
-
-      result = this.getProductCommand(result)
 
       console.log(result, 'result')
 
@@ -140,11 +122,6 @@ Page({
       wx.navigateTo({ url: '../productDetail/productDetail?id=' + id })
     } else {
       // 过期了
-      wx.showToast({
-        title: '淘口令已过期，请耐心等待商家更新',
-        icon: 'none',
-        duration: 2000
-      })
     }
   },
 

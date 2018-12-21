@@ -28,21 +28,11 @@
         </view>
         <!-- <view class="desc-container">{{item.pro_desc}}</view> -->
 
-        <view wx:if="{{isAdmin}}" class="command-cur">
-          <view class="pro-command" wx:if="{{item.diff > 3}}">淘口令还有{{item.diff}}天过期</view>
-          <view class="pro-command diff-command" wx:if="{{item.diff < 3 && item.diff > 0}}">淘口令{{item.diff}}天后过期，请及时更新！</view>
-          <view class="pro-command diff-command" wx:if="{{item.diff <= 0}}">淘口令已经过期，请及时更新！</view>
-        </view>
-
         <view class="pro_price"><text class="price_text">￥</text>{{item.pro_price}}</view>
         
         <view class="edit-item" wx:if="{{isAdmin}}">
           <view class="iconfont icon-edit" catchtap="editProduct" data-detail="{{item}}" wx:if="{{isAdmin}}"></view>
           <view class="iconfont icon-shanchu1" catchtap="deleteProduct" data-id="{{item._id}}" data-profileid="{{item.pro_fileid}}" wx:if="{{isAdmin}}"></view>
-        </view>
-
-        <view class="post-mark" wx:if="{{item.diff <= 0}}">
-          <view class="mark-inside">已过期</view>
         </view>
 
       </view>
