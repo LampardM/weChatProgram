@@ -26,18 +26,16 @@
     <view>须知：一切商品以微信图片为实物参照哦</view>
   </view>
 
-  <!--  
-    <view class="detail-command">
-      <view class="detail-tips">
-        <view class="iconfont icon-tips"></view>
-        <text>复制淘口令后进入淘宝app打开哦</text>
-      </view>
-
-      <view class="detail-btn">
-        <view bindtap="getProcommand">查看淘口令</view>
-      </view>
+  <view class="detail-command">
+    <view class="detail-tips">
+      <view class="iconfont icon-tips"></view>
+      <text>复制淘口令后进入淘宝app打开哦</text>
     </view>
-  -->
+
+    <view class="detail-btn">
+      <view bindtap="getProcommand">查看淘口令</view>
+    </view>
+  </view>
 
   <view class="end-container">
     <view>到底啦</view>
