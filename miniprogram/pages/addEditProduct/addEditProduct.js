@@ -242,7 +242,7 @@ Page({
     let reg=/^\d+(\.\d{0,4})?$/;
 
     if(reg.test(price)) {
-      let priceNow = JSON.parse(price)
+      let priceNow = price
       this.setData({
         pro_price: priceNow
       })
