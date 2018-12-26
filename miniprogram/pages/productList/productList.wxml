@@ -21,7 +21,7 @@
 
   <view class="pro-list">
     <block wx:for="{{productlist}}" wx:key="{{index}}">
-      <view class="product-item {{item.diff <= 0 ? 'pro-disabled': ''}}" bindtap="goProductDetail" data-diff="{{item.diff}}" data-id="{{item._id}}">
+      <view class="product-item" bindtap="goProductDetail" data-diff="{{item.diff}}" data-id="{{item._id}}">
         <view class="item-img"><image src="{{item.pro_fileid[0]}}"/></view>
         <view class="name-price-container">
           <view class="price_name">{{item.pro_name}}</view>

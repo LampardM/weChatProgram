@@ -67,7 +67,7 @@
 
       <view class="hot-list" wx:if="{{hotlist.length > 0}}">
         <block wx:for="{{hotlist}}" wx:key="{{index}}">
-          <view class="product-item {{item.diff <= 0 ? 'pro-disabled': ''}}" bindtap="goProductDetail" data-diff="{{item.diff}}" data-id="{{item._id}}">
+          <view class="product-item" bindtap="goProductDetail" data-diff="{{item.diff}}" data-id="{{item._id}}">
             <view class="item-img"><image src="{{item.pro_fileid[0]}}"/></view>
             <view class="name-price-container">
               <view class="price_name">{{item.pro_name}}</view>
@@ -79,10 +79,6 @@
             <view class="edit-item" wx:if="{{isAdmin}}">
               <view class="iconfont icon-edit" catchtap="editProduct" data-detail="{{item}}" wx:if="{{isAdmin}}" data-type="{{item.pro_type}}"></view>
               <view class="iconfont icon-shanchu1" catchtap="deleteProduct" data-id="{{item._id}}" data-type="{{item.pro_type}}" data-profileid="{{item.pro_fileid}}" wx:if="{{isAdmin}}"></view>
-            </view>
-
-            <view class="post-mark" wx:if="{{item.diff <= 0}}">
-              <view class="mark-inside">已过期</view>
             </view>
 
           </view>

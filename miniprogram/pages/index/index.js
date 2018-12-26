@@ -133,12 +133,15 @@ Page({
   goProductDetail(e) {
     let diff = e.currentTarget.dataset.diff
     let id = e.currentTarget.dataset.id
-    if(diff > 0) {
-      // 没过期 跳详情页
-      wx.navigateTo({ url: '../productDetail/productDetail?id=' + id })
-    } else {
-      // 过期了
-    }
+
+    // if(diff > 0) {
+    //   // 没过期 跳详情页
+    //   wx.navigateTo({ url: '../productDetail/productDetail?id=' + id })
+    // } else {
+    //   // 过期了
+    // }
+
+    wx.navigateTo({ url: '../productDetail/productDetail?id=' + id })
   },
 
   // 编辑商品
