@@ -4,7 +4,6 @@
     "pages/index/index",
     "pages/chooseLib/chooseLib",
     "pages/productList/productList",
-    "pages/addEditProduct/addEditProduct",
     "pages/productDetail/productDetail"
   ],
   "window": {

@@ -65,54 +65,6 @@ Page({
     })
   },
 
-  // 增加商品
-  addProduct() {
-    let type = this.data.pro_type // pro type
-    wx.navigateTo({ url: '../addEditProduct/addEditProduct?type=' + 1 + '&pro_type=' + type })
-  },
-
-  // 编辑商品
-  editProduct(e) {
-    let id = e.currentTarget.dataset.id
-    let pro_detail = JSON.stringify(e.currentTarget.dataset.detail)
-    let type = this.data.pro_type // pro type
-
-    wx.navigateTo({ url: '../addEditProduct/addEditProduct?type=' + 2 + '&pro_type=' + type + '&pro_detail=' + pro_detail })
-
-  },
-
-  // 删除商品
-  deleteProduct(e) {
-    let id = e.currentTarget.dataset.id
-    let pro_fileid = e.currentTarget.dataset.profileid
-
-    wx.showModal({
-      title: '提示',
-      content: '确定删除该商品么？',
-      success: function (res) {
-        if (res.confirm) {
-          wx.cloud.callFunction({
-            name: 'deleteproduct',
-            data: {
-              _id: id,
-              pro_fileid: pro_fileid,
-            }
-          }).then((res) => {
-            console.log(res, '删除')
-            wx.showToast({
-              title: '删除成功',
-              icon: 'success',
-              duration: 2000
-            })
-            this.getProductList(JSON.parse(this.data.pro_type))
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }.bind(this)
-    })
-  },
-
   // 查看商品详情
   goProductDetail(e) {
     let diff = e.currentTarget.dataset.diff

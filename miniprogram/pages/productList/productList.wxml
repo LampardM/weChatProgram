@@ -29,18 +29,9 @@
         <!-- <view class="desc-container">{{item.pro_desc}}</view> -->
 
         <view class="pro_price"><text class="price_text">￥</text>{{item.pro_price}}</view>
-        
-        <view class="edit-item" wx:if="{{isAdmin}}">
-          <view class="iconfont icon-edit" catchtap="editProduct" data-detail="{{item}}" wx:if="{{isAdmin}}"></view>
-          <view class="iconfont icon-shanchu1" catchtap="deleteProduct" data-id="{{item._id}}" data-profileid="{{item.pro_fileid}}" wx:if="{{isAdmin}}"></view>
-        </view>
 
       </view>
     </block>
-  </view>
-
-  <view class="add-product" bindtap="addProduct" wx:if="{{showAdd && isAdmin}}">
-    <view class="add-btn iconfont icon-zengjia"></view>
   </view>
 
   <!-- 回到顶部 -->

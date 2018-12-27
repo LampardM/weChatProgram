@@ -9,7 +9,7 @@
 		"newFeature": true
 	},
 	"appid": "wx0c1344da20f42a2a",
-	"projectname": "WechatProgram",
+	"projectname": "wechatNewProgram",
 	"libVersion": "2.4.0",
 	"condition": {
 		"search": {
@@ -35,12 +35,6 @@
 					"name": "db guide",
 					"pathName": "pages/databaseGuide/databaseGuide",
 					"query": ""
-				},
-				{
-					"id": 1,
-					"name": "addedit",
-					"pathName": "pages/addEditProduct/addEditProduct",
-					"query": "type=0&pro_type=1"
 				},
 				{
 					"id": 2,
