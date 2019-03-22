@@ -24,44 +24,44 @@ function initChart(canvas, width, height) {
     width: width,
     height: height
   });
+  chart.showLoading();
+
   canvas.setChart(chart);
 
   var option = {
-    title: {
-        text: '动态数据 + 时间坐标轴'
-    },
+    title: {},
     tooltip: {
-        trigger: 'axis',
-        formatter: function (params) {
-            params = params[0];
-            var date = new Date(params.name);
-            return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
-        },
-        axisPointer: {
-            animation: false
-        }
+      trigger: 'axis',
+      formatter: function (params) {
+        params = params[0];
+        var date = new Date(params.name);
+        return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+      },
+      axisPointer: {
+        animation: false
+      }
     },
     xAxis: {
-        type: 'time',
-        splitLine: {
-            show: false
-        }
+      type: 'time',
+      splitLine: {
+          show: true
+      }
     },
     yAxis: {
-        type: 'value',
-        boundaryGap: [0, '100%'],
-        splitLine: {
-            show: false
-        }
+      type: 'value',
+      boundaryGap: [0, '100%'],
+      splitLine: {
+        show: true
+      }
     },
     series: [{
-        name: '模拟数据',
-        type: 'line',
-        showSymbol: false,
-        hoverAnimation: false,
-        data: data
+      name: '模拟数据',
+      type: 'line',
+      showSymbol: false,
+      hoverAnimation: false,
+      data: data
     }]
-};
+  };
 
   chart.setOption(option);
   return chart;
@@ -74,20 +74,31 @@ Page({
     }
   },
 
-  onReady() {
-    setInterval(function () {
-      if(data.length > 0) {
-        data.shift();
-      }
-      for (var i = 0; i < 5; i++) {
-          data.push(randomData());
-      }
+  onLoad() {},
 
-      chart.setOption({
-          series: [{
-              data: data
-          }]
-      });
-  }, 1000);
+  refresh() {      
+    if(data.length > 0) {
+      data.shift();
+    }
+    for (var i = 0; i < 2; i++) {
+      data.push(randomData());
+    }
+
+    chart.setOption({
+      series: [{
+        data: data
+      }]
+    });
+
+    setTimeout(this.refresh,1000);
+  },
+
+  onReady() {
+    data = []
+
+    setTimeout(() => {
+      chart.hideLoading()
+      this.refresh()
+    },1000)
   }
 });
