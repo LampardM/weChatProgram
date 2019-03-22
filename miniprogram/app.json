@@ -5,7 +5,8 @@
     "pages/chooseLib/chooseLib",
     "pages/productList/productList",
     "pages/addEditProduct/addEditProduct",
-    "pages/productDetail/productDetail"
+    "pages/productDetail/productDetail",
+    "pages/echarts/echarts"
   ],
   "window": {
     "backgroundColor": "#63B8FF",
