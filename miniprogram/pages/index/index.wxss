@@ -197,6 +197,7 @@ Page {
 }
 
 .contact-container {
+  z-index: 99;
   position:fixed;
   top:60%;
   right:10rpx;
